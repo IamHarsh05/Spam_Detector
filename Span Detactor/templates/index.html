@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html >
+<head>
+  	<meta charset="UTF-8">
+  	<title>Spam Detection System</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+ <div class="content">
+	<h1>Spam/Ham Detector for Text-Message</h1>
+    <form action="{{ url_for('predict')}}" method="POST">
+    	<textarea  name="message" rows="6" cols="50" required="required"></textarea>
+		<br><br>
+        <button type="submit">Predict</button>
+        <div class="results">
+			{% if prediction == 1%}
+			<h2 style="color:red;">Looking Spam,Be safe</h2>
+			{% elif prediction == 0%}
+			<h2 style="color:green;"><b>Not a Spam</b></h2>
+			{% endif %}
+		</div>
+    </form>
+</div>
+</body>
+</html>
